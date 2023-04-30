@@ -14,7 +14,7 @@ A [Teams](https://www.microsoft.com/en/microsoft-teams) Handler for [slog](https
 
 **See also:**
 
-- [slog-multi](https://github.com/samber/slog-formatter): `slog.Handler` chaining, fanout, routing, failover, load balancing...
+- [slog-multi](https://github.com/samber/slog-multi): `slog.Handler` chaining, fanout, routing, failover, load balancing...
 - [slog-formatter](https://github.com/samber/slog-formatter): `slog` attribute formatting
 - [slog-gin](https://github.com/samber/slog-gin): Gin middleware for `slog` logger
 - [slog-echo](https://github.com/samber/slog-echo): Echo middleware for `slog` logger
