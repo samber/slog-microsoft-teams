@@ -1,8 +1,8 @@
 module github.com/samber/slog-microsoft-teams
 
-go 1.20
+go 1.21
 
-require golang.org/x/exp v0.0.0-20230522175609-2e198f4a06a1
+require golang.org/x/exp v0.0.0-20230522175609-2e198f4a06a1 // indirect
 
 require (
 	github.com/atc0005/go-teams-notify/v2 v2.7.0

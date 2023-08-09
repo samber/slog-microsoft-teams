@@ -1,6 +1,6 @@
 package slogmicrosoftteams
 
-import "golang.org/x/exp/slog"
+import "log/slog"
 
 var colorMap = map[slog.Level]string{
 	slog.LevelDebug: "#63C5DA",

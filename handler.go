@@ -6,7 +6,7 @@ import (
 	goteamsnotify "github.com/atc0005/go-teams-notify/v2"
 	"github.com/atc0005/go-teams-notify/v2/messagecard"
 
-	"golang.org/x/exp/slog"
+	"log/slog"
 )
 
 type Option struct {

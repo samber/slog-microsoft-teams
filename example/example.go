@@ -6,7 +6,7 @@ import (
 
 	slogmicrosoftteams "github.com/samber/slog-microsoft-teams"
 
-	"golang.org/x/exp/slog"
+	"log/slog"
 )
 
 func main() {
