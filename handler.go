@@ -36,6 +36,8 @@ func (o Option) NewMicrosoftTeamsHandler() slog.Handler {
 	}
 }
 
+var _ slog.Handler = (*MicrosoftTeamsHandler)(nil)
+
 type MicrosoftTeamsHandler struct {
 	option Option
 	attrs  []slog.Attr
