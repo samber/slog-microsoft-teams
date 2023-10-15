@@ -65,7 +65,17 @@ type Option struct {
 
 	// optional: customize Teams event builder
 	Converter Converter
+
+	// optional: see slog.HandlerOptions
+	AddSource   bool
+	ReplaceAttr func(groups []string, a slog.Attr) slog.Attr
 }
+```
+
+Other global parameters:
+
+```go
+slogmicrosoftteams.SourceKey = "source"
 ```
 
 ### Example

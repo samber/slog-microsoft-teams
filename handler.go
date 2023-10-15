@@ -5,6 +5,7 @@ import (
 
 	goteamsnotify "github.com/atc0005/go-teams-notify/v2"
 	"github.com/atc0005/go-teams-notify/v2/messagecard"
+	slogcommon "github.com/samber/slog-common"
 
 	"log/slog"
 )
@@ -18,6 +19,10 @@ type Option struct {
 
 	// optional: customize Teams event builder
 	Converter Converter
+
+	// optional: see slog.HandlerOptions
+	AddSource   bool
+	ReplaceAttr func(groups []string, a slog.Attr) slog.Attr
 }
 
 func (o Option) NewMicrosoftTeamsHandler() slog.Handler {
@@ -54,7 +59,7 @@ func (h *MicrosoftTeamsHandler) Handle(ctx context.Context, record slog.Record) 
 		converter = h.option.Converter
 	}
 
-	message := converter(h.attrs, &record)
+	message := converter(h.option.AddSource, h.option.ReplaceAttr, h.attrs, h.groups, &record)
 
 	mstClient := goteamsnotify.NewTeamsClient()
 
@@ -69,7 +74,7 @@ func (h *MicrosoftTeamsHandler) Handle(ctx context.Context, record slog.Record) 
 func (h *MicrosoftTeamsHandler) WithAttrs(attrs []slog.Attr) slog.Handler {
 	return &MicrosoftTeamsHandler{
 		option: h.option,
-		attrs:  appendAttrsToGroup(h.groups, h.attrs, attrs),
+		attrs:  slogcommon.AppendAttrsToGroup(h.groups, h.attrs, attrs...),
 		groups: h.groups,
 	}
 }
