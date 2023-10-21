@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	slogmicrosoftteams "github.com/samber/slog-microsoft-teams"
+	slogmicrosoftteams "github.com/samber/slog-microsoft-teams/v2"
 
 	"log/slog"
 )

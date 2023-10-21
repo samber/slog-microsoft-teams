@@ -1,4 +1,4 @@
-module github.com/samber/slog-microsoft-teams
+module github.com/samber/slog-microsoft-teams/v2
 
 go 1.21
 

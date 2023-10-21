@@ -43,16 +43,16 @@ A [Teams](https://www.microsoft.com/en/microsoft-teams) Handler for [slog](https
 ## 🚀 Install
 
 ```sh
-go get github.com/samber/slog-microsoft-teams
+go get github.com/samber/slog-microsoft-teams/v2
 ```
 
 **Compatibility**: go >= 1.21
 
-No breaking changes will be made to exported APIs before v2.0.0.
+No breaking changes will be made to exported APIs before v3.0.0.
 
 ## 💡 Usage
 
-GoDoc: [https://pkg.go.dev/github.com/samber/slog-microsoft-teams](https://pkg.go.dev/github.com/samber/slog-microsoft-teams)
+GoDoc: [https://pkg.go.dev/github.com/samber/slog-microsoft-teams/v2](https://pkg.go.dev/github.com/samber/slog-microsoft-teams/v2)
 
 ### Handler options
 
@@ -83,7 +83,7 @@ slogmicrosoftteams.SourceKey = "source"
 
 ```go
 import (
-	slogmicrosoftteams "github.com/samber/slog-microsoft-teams"
+	slogmicrosoftteams "github.com/samber/slog-microsoft-teams/v2"
 	"log/slog"
 )
 
