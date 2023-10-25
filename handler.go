@@ -66,7 +66,7 @@ func (h *MicrosoftTeamsHandler) Handle(ctx context.Context, record slog.Record) 
 	msgCard := messagecard.NewMessageCard()
 	msgCard.Title = record.Message
 	msgCard.Text = message
-	msgCard.ThemeColor = colorMap[record.Level]
+	msgCard.ThemeColor = ColorMapping[record.Level]
 
 	go func() {
 		_ = mstClient.Send(h.option.WebhookURL, msgCard)

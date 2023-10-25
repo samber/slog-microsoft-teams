@@ -77,6 +77,7 @@ Other global parameters:
 
 ```go
 slogmicrosoftteams.SourceKey = "source"
+slogmicrosoftteams.ColorMapping = map[slog.Level]string{...}
 ```
 
 ### Example
