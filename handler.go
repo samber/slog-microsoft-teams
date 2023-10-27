@@ -69,7 +69,7 @@ func (h *MicrosoftTeamsHandler) Handle(ctx context.Context, record slog.Record) 
 	msgCard.ThemeColor = ColorMapping[record.Level]
 
 	go func() {
-		_ = mstClient.Send(h.option.WebhookURL, msgCard)
+		_ = mstClient.SendWithContext(ctx, h.option.WebhookURL, msgCard)
 	}()
 
 	return nil
