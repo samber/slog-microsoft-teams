@@ -2,6 +2,7 @@ package slogmicrosoftteams
 
 import (
 	"context"
+	"time"
 
 	goteamsnotify "github.com/atc0005/go-teams-notify/v2"
 	"github.com/atc0005/go-teams-notify/v2/messagecard"
@@ -16,6 +17,7 @@ type Option struct {
 
 	// Teams webhook url
 	WebhookURL string
+	Timeout    time.Duration // default: 10s
 
 	// optional: customize Teams event builder
 	Converter Converter
@@ -32,6 +34,10 @@ func (o Option) NewMicrosoftTeamsHandler() slog.Handler {
 
 	if o.WebhookURL == "" {
 		panic("missing Teams webhook url")
+	}
+
+	if o.Timeout == 0 {
+		o.Timeout = 10 * time.Second
 	}
 
 	return &MicrosoftTeamsHandler{
@@ -69,6 +75,9 @@ func (h *MicrosoftTeamsHandler) Handle(ctx context.Context, record slog.Record) 
 	msgCard.ThemeColor = ColorMapping[record.Level]
 
 	go func() {
+		ctx, cancel := context.WithTimeout(context.Background(), h.option.Timeout)
+		defer cancel()
+
 		_ = mstClient.SendWithContext(ctx, h.option.WebhookURL, msgCard)
 	}()
 

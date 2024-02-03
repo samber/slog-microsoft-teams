@@ -65,6 +65,7 @@ type Option struct {
 
 	// Teams webhook url
 	WebhookURL string
+	Timeout    time.Duration // default: 10s
 
 	// optional: customize Teams event builder
 	Converter Converter
