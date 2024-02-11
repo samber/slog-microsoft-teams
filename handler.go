@@ -40,6 +40,10 @@ func (o Option) NewMicrosoftTeamsHandler() slog.Handler {
 		o.Timeout = 10 * time.Second
 	}
 
+	if o.Converter == nil {
+		o.Converter = DefaultConverter
+	}
+
 	return &MicrosoftTeamsHandler{
 		option: o,
 		attrs:  []slog.Attr{},
@@ -60,12 +64,7 @@ func (h *MicrosoftTeamsHandler) Enabled(_ context.Context, level slog.Level) boo
 }
 
 func (h *MicrosoftTeamsHandler) Handle(ctx context.Context, record slog.Record) error {
-	converter := DefaultConverter
-	if h.option.Converter != nil {
-		converter = h.option.Converter
-	}
-
-	message := converter(h.option.AddSource, h.option.ReplaceAttr, h.attrs, h.groups, &record)
+	message := h.option.Converter(h.option.AddSource, h.option.ReplaceAttr, h.attrs, h.groups, &record)
 
 	mstClient := goteamsnotify.NewTeamsClient()
 
