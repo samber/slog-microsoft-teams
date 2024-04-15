@@ -10,5 +10,4 @@ require (
 require (
 	github.com/atc0005/go-teams-notify/v2 v2.7.0
 	github.com/samber/slog-common v0.15.2
-	go.uber.org/goleak v1.2.1
 )
