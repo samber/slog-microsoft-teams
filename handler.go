@@ -73,6 +73,7 @@ func (h *MicrosoftTeamsHandler) Handle(ctx context.Context, record slog.Record) 
 	msgCard.Text = message
 	msgCard.ThemeColor = ColorMapping[record.Level]
 
+	// non-blocking
 	go func() {
 		ctx, cancel := context.WithTimeout(context.Background(), h.option.Timeout)
 		defer cancel()
