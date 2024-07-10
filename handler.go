@@ -93,6 +93,11 @@ func (h *MicrosoftTeamsHandler) WithAttrs(attrs []slog.Attr) slog.Handler {
 }
 
 func (h *MicrosoftTeamsHandler) WithGroup(name string) slog.Handler {
+	// https://cs.opensource.google/go/x/exp/+/46b07846:slog/handler.go;l=247
+	if name == "" {
+		return h
+	}
+
 	return &MicrosoftTeamsHandler{
 		option: h.option,
 		attrs:  h.attrs,
