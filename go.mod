@@ -9,7 +9,7 @@ require (
 )
 
 require (
-	github.com/atc0005/go-teams-notify/v2 v2.13.0
+	github.com/atc0005/go-teams-notify/v2 v2.14.0
 	github.com/samber/slog-common v0.20.0
 	go.uber.org/goleak v1.3.0
 )
